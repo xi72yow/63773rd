@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+#@ThisIsTenou  https://github.com/ThisIsTenou/makemkv-autorip-script/blob/master/autorip.sh
+
 # Initial search for drives
 mapfile -t drives < <(ls /dev/sr*)
 echo "----------------------------"
@@ -32,7 +34,7 @@ discstatus() {
             echo "[INFO] $drive: disc is ready" >&2
             unset repeatnodisc
             unset repeatemptydisc
-            #/bin/bash "./getter.sh" "$drive"
+            /bin/bash "./getter.sh" "$drive"
             sleep 10
             ;;
             # What to do when the disc is found, but not yet ready
