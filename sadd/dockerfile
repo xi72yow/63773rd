@@ -1,0 +1,19 @@
+FROM ubuntu:jammy
+
+COPY . /app
+
+WORKDIR /app
+
+RUN chmod +x ./setup.sh
+
+RUN chmod +x ./loop.sh
+
+RUN chmod +x ./getter.sh
+
+RUN apt-get update && apt-get install -y apt-transport-https
+
+RUN apt-get -y install build-essential pkg-config libc6-dev libssl-dev libexpat1-dev libavcodec-dev libgl1-mesa-dev qtbase5-dev zlib1g-dev nasm libfdk-aac-dev sed wget curl tar setcd eject nano mediainfo
+
+RUN ["./setup.sh"]
+
+CMD ["./loop.sh"]
