@@ -10,17 +10,7 @@ printf '%s\n' "${drives[@]}"
 echo "----------------------------"
 
 # Eject all drives to indicate startup
-for drive in "${drives[@]}"; do
-    echo "[INFO] $drive: Ejecting drive"
-    #wiat for eject to finish
-    while setcd -i "$drive" | grep --quiet 'Disc found'; do
-        echo "[INFO] $drive: Drive is not ejected, waiting 10 seconds"
-        sleep 10
-        eject "$drive"
-    done
-
-done
-echo $(setcd -i /dev/sr0 2>/dev/null)
+for drive in "${drives[@]}"; do eject "$drive" & done
 
 # Create template for forking
 discstatus() {
