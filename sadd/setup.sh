@@ -50,6 +50,10 @@ cd ~
 # Detect beta-key from forums
 REG_KEY="$(curl --silent "http://www.makemkv.com/forum2/viewtopic.php?f=5&t=1053" 2>&1 | egrep -o 'class="codecontent">([^<]*)' | sed 's/class="codecontent">//')"
 
+# Create settings.conf
+mkdir .MakeMKV
+touch .MakeMKV/settings.conf
+
 # Apply current beta key (overrides settings!)
 echo "app_Key = \"${REG_KEY}\"" >./.MakeMKV/settings.conf
 

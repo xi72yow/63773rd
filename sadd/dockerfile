@@ -1,6 +1,6 @@
-FROM ubuntu:jammy
+FROM ubuntu:latest
 
-COPY ./sadd /app
+COPY . /app
 
 WORKDIR /app
 
